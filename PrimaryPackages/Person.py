@@ -1,13 +1,15 @@
-# This line defines a class named Person
+import self
+
+
 class Person:
 
-    # This is the constructor, which takes three parameters: self, name, and age
-    # It assigns the name and age arguments to the object's attributes using self
+
     def __init__(self, name, age):
         self.name = name
         self.age = age
 
-    # This is a method that prints the object's name and age using self
+
+
     def introduce(self):
         print(f"My name is {self.name} and I am {self.age} years old.")
 

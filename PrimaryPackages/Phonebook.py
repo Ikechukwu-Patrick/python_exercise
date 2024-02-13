@@ -1,58 +1,28 @@
-class Phonebook:
+class PhoneBook:
     def __init__(self):
-        self.phonebook = {}
+        self.contacts = {}
 
     def add_contact(self, name, number):
-        self.phonebook[name] = number
-        print(f"Contact {name} added with phone number {number}")
+        self.contacts[name] = number
 
-    def edit_contact(self, name, new_number):
-        if name in self.phonebook:
-            self.phonebook[name] = new_number
-            print(f"Contact {name} edited with new phone number {new_number}")
+    def delete_contact(self, name):
+        if name in self.contacts:
+            del self.contacts[name]
+
+    def get_contact(self, name):
+        if name in self.contacts:
+            return self.contacts[name]
         else:
-            print(f"Contact {name} not found in the phonebook")
+            return "Contact not found"
 
-    def display_contacts(self):
-        if not self.phonebook:
-            print("Phonebook is empty.")
-        else:
-            print("Phonebook:")
-            for name, number in self.phonebook.items():
-                print(f"{name}: {number}")
+    def list_contacts(self):
+        return self.contacts
 
 
-phonebook_app = Phonebook()
-
-while True:
-    print("\nOptions:")
-    print("1. Add Contact")
-    print("2. Edit Contact")
-    print("3. Display Contacts")
-    print("4. Exit")
-
-    function = input("Enter any of the functions below (1-4): ")
-
-    if function == "1":
-        name = input("Enter the name: ")
-        number = input("Enter the phone number: ")
-        phonebook_app.add_contact(name, number)
-
-    elif function == "2":
-        name = input("Enter the name of the contact to edit: ")
-        new_number = input("Enter the new phone number: ")
-        phonebook_app.edit_contact(name, new_number)
-
-    elif function == "3":
-        phonebook_app.display_contacts()
-
-    elif function == "4":
-        print("Exiting phonebook app.")
-        break
-
-    else:
-        print("Invalid choice. Please enter a number between 1 and 4.")
-
-
-def add_contact(name, number):
-    return None
+phone_book = PhoneBook()
+phone_book.add_contact("Micheal", "1234567890")
+phone_book.add_contact("Marvelous", "9876543210")
+print(phone_book.list_contacts())
+print(phone_book.get_contact("Micheal"))
+phone_book.delete_contact("Micheal")
+print(phone_book.list_contacts())
