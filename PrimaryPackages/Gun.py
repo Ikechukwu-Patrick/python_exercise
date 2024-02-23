@@ -1,8 +1,7 @@
-
 class Gun:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.bullets = 0
+        self.bullets = capacity
 
     def add_bullet(self, num_bullets):
         if num_bullets > 12:
@@ -18,4 +17,3 @@ class Gun:
             return "Bang!"
         else:
             return "Click..."
-
