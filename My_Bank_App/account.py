@@ -1,15 +1,9 @@
 class Account:
-    def __init__(self, name: str, account_number: int, balance: int, phone_number: int):
-        self.phone_number = phone_number
-        self.balance = balance
+    def __init__(self, name: str, account_number: int, balance: int, pin: str):
+        self.balance = None
+        self.pin = pin
         self.name = name
         self.account_number = account_number
-
-    def getName(self):
-        return self.name
-
-    def setName(self, name):
-        self.name = name
 
     def getBalance(self):
         return self.balance
@@ -19,9 +13,10 @@ class Account:
             raise ValueError("Invalid input, input positive amount")
         self.balance += amount
 
-    def withdrawal(self, amount, pin):
+    def withdraw(self, amount, pin):
         self.validatePin(pin)
-        if self.balance < amount:
+        balance_after_deposit = self.balance - 300
+        if balance_after_deposit < amount:
             raise ValueError("Sorry you cannot withdraw as your balance is not enough")
         if amount < 0:
             raise ValueError("Invalid input, input positive number")
@@ -39,7 +34,9 @@ class Account:
         self.balance = balance
 
     def getNumber(self):
-        return self.number
+        return self.account_number
 
     def setNumber(self, number):
-        self.phone_number = number
+        if number != self.account_number:
+            raise ValueError("No account found")
+        self.account_number = number
